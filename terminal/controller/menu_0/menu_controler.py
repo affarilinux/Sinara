@@ -1,5 +1,5 @@
 
-from terminal.statics.print_static import PrintStatic
+from terminal.static.print_static import PrintStatic
 
 
 class MenuControler:

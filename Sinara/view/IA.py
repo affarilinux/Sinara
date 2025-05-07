@@ -2,8 +2,10 @@ import threading
 import queue
 import trio
 
-from terminal.statics.print_static import PrintStatic
+from terminal.static.print_static import PrintStatic
+from Sinara.static.print_static_Snr import PrintStaticSnr
 
+from Sinara.controler.IA_controler import IAControler
 
 class IA:
 
@@ -12,6 +14,8 @@ class IA:
         self.running = True  # loop da IA
 
         self.comandos = comando_queue  # fila de comandos do menu
+
+        self.controller = IAControler()  # Instância do Controller
 
         self.thread = threading.Thread(target=self.run_trio)
         self.thread.daemon = False
@@ -23,15 +27,9 @@ class IA:
     def run_trio(self):
         trio.run(self.main)
 
-    async def worker(self, id):
-        print(f"Worker {id} iniciando...")
-        await trio.sleep(3)
-        print(f"Worker {id} finalizado.")
+    
 
     async def main(self):
-
-        PrintStatic.print_espaco()
-        PrintStatic.printar("IA iniciando loop principal.")
 
         async with trio.open_nursery() as nursery:
 
@@ -45,8 +43,8 @@ class IA:
 
                         print("Comando recebido: trabalhar")
 
-                        nursery.start_soon(self.worker, 1)
-                        nursery.start_soon(self.worker, 2)
+                        nursery.start_soon(self.controller.worker, 1)
+                        nursery.start_soon(self.controller.worker, 2)
 
                     elif comando == "parar":
 
