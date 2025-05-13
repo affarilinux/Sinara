@@ -14,7 +14,7 @@ class PrintStatic:
         """
         Print an empty line.
         """
-        print("\n")
+        print("")
 
     @staticmethod
     def print_asteristico():

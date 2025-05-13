@@ -1,7 +1,16 @@
+from prompt_toolkit.key_binding import KeyBindings
+from prompt_toolkit import PromptSession
+
 from terminal.static.print_static import PrintStatic
+
+from terminal.controller.menu_0.menu_controler import MenuControler
 
 
 class InterfaceTerminal:
+
+    def __init__(self, ia):
+
+        self.varclass_menucontrol = MenuControler(ia)
 
     def tc0msc_input_int(self, session):
         """
@@ -40,8 +49,41 @@ class InterfaceTerminal:
 
         PrintStatic.printar("Menu de opções:")
         PrintStatic.printar("   Escolha uma opção:")
-        PrintStatic.printar("   0 - Encerrar terminal")
-        PrintStatic.printar("   1 - Digitar texto")
-        PrintStatic.printar("   2 - Sair")
+        PrintStatic.printar("   0 - Encerrar terminal.")
+        PrintStatic.printar("   1 - Iniciar IA.")
+        PrintStatic.printar("   2 - Digite uma frase.")
 
         PrintStatic.print_asteristico()
+
+    def tc0msc_input_string(self):
+        """
+        Lê uma string do usuário, permite cancelar com Ctrl + Seta Esquerda.
+        """
+
+        kb = KeyBindings()
+        var_while = True
+
+        @kb.add('c-left')  # Ctrl + Seta esquerda
+        def _(event):
+
+            nonlocal var_while
+            PrintStatic.printar("Voltando ao menu...")
+
+            var_while = False
+            event.app.exit("")  # Encerra o prompt com string vazia
+
+        session = PromptSession(key_bindings=kb)
+
+        while var_while:
+
+            PrintStatic.print_asteristico()
+            PrintStatic.printar(
+                "Voltar ao Menu: Ctrl + Seta para a esquerda (<-)")
+
+            __frase = session.prompt("# - Digite uma frase: ")
+
+            if __frase.strip() != "":
+
+                self.varclass_menucontrol.tc0m_Outra_opção_n2(__frase)
+
+            PrintStatic.print_asteristico()

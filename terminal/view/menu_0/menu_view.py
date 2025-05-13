@@ -21,7 +21,7 @@ class MenuView:
         # Atributos
 
         self.var_class_controler = MenuControler(self.ia)
-        self.var_class_msc = InterfaceTerminal()
+        self.var_class_msc = InterfaceTerminal(self.ia)
 
         self.varclass_printar = PrintStatic()
 
@@ -47,15 +47,11 @@ class MenuView:
 
                     case 1:
 
-                        """__string_frase = str(input("Digite a frase: "))
-
-                        self.var_class_controler.tc0m_texto_input_IA(
-                            __string_frase)"""
                         self.var_class_controler.tc0m_Mandar_IA_trabalhar_n1()
 
                     case 2:
 
-                        self.var_class_controler.tc0m_Outra_opção_n2()
+                        self.var_class_msc.tc0msc_input_string()
 
                     case '*':
 

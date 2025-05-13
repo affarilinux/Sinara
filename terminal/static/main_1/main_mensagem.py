@@ -5,7 +5,7 @@ from terminal.static.print_static import PrintStatic
 class Mainmensagem:
 
     INICIALIZANDO_SISTEMA = "Inicializando o sistema."
-    INICIALIZANDO_IA =  "Inicializando a IA."
+    INICIALIZANDO_IA = "Inicializando a threads IA."
     INICIALIZANDO_TERMINAL = "Inicializando o terminal."
     ENCERANDO_CTRLC = "Encerrando via Ctrl+C..."
     SISTEMA_ENCERRADO = "Sistema encerrado com sucesso."
@@ -20,12 +20,10 @@ class Mainmensagem:
 
     def s1mm_inicializado_terminal(self):
 
-        
         PrintStatic.printar(self.INICIALIZANDO_TERMINAL)
         PrintStatic.print_espaco()
-        
-    
+
     def s1mm_inicializado_ia(self):
-        
+
         PrintStatic.printar(self.INICIALIZANDO_IA)
         PrintStatic.print_asteristico()

@@ -2,10 +2,9 @@ import threading
 import queue
 import trio
 
-from terminal.static.print_static import PrintStatic
-from Sinara.static.print_static_Snr import PrintStaticSnr
-
+from Sinara.static.IA_mensagem import IAMensagem
 from Sinara.controler.IA_controler import IAControler
+
 
 class IA:
 
@@ -14,6 +13,8 @@ class IA:
         self.running = True  # loop da IA
 
         self.comandos = comando_queue  # fila de comandos do menu
+
+        self.ia_mensagem = IAMensagem()  # Mensagens da IA
 
         self.controller = IAControler()  # Instância do Controller
 
@@ -27,8 +28,6 @@ class IA:
     def run_trio(self):
         trio.run(self.main)
 
-    
-
     async def main(self):
 
         async with trio.open_nursery() as nursery:
@@ -39,17 +38,15 @@ class IA:
 
                     comando = self.comandos.get_nowait()
 
-                    if comando == "trabalhar":
+                    if comando == "iniciar_IA":
 
-                        print("Comando recebido: trabalhar")
+                        self.ia_mensagem.sia_inicializando_ia()
 
-                        nursery.start_soon(self.controller.worker, 1)
-                        nursery.start_soon(self.controller.worker, 2)
+                        nursery.start_soon(self.controller.worker)
 
-                    elif comando == "parar":
+                    elif comando == "encerar_IA":
 
-                        PrintStatic.printar("Comando recebido: parar")
-
+                        self.ia_mensagem.sia_encarando_ia()
                         # encerar a IA
                         # self.running = False
                         self.stop()
@@ -58,9 +55,6 @@ class IA:
                     pass
 
                 await trio.sleep(0.5)
-
-        PrintStatic.print_espaco()
-        PrintStatic.printar("IA encerrando loop principal.")
 
     def aguardar_encerramento(self):
         self.thread.join()
