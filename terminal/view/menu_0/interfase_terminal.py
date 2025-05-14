@@ -49,9 +49,10 @@ class InterfaceTerminal:
 
         PrintStatic.printar("Menu de opções:")
         PrintStatic.printar("   Escolha uma opção:")
-        PrintStatic.printar("   0 - Encerrar terminal.")
+        PrintStatic.printar("   0 - Encerrar Sistema.")
         PrintStatic.printar("   1 - Iniciar IA.")
-        PrintStatic.printar("   2 - Digite uma frase.")
+        PrintStatic.printar("   2 - desativar IA.")
+        PrintStatic.printar("   3 - Digite uma frase.")
 
         PrintStatic.print_asteristico()
 

@@ -2,6 +2,8 @@ import trio
 
 from Sinara.model.terminal.lista_frases import FrasesModel
 
+from Sinara.model.input.lista_Sensores import ListaSensores
+
 
 class IAControler:
 
@@ -9,7 +11,12 @@ class IAControler:
 
         self.frases = FrasesModel()
 
-    async def worker(self):
+        self.lista_sensor = ListaSensores()
+
+    async def sensor_rede(self):
 
         var_letrawk = self.frases.Sinara_frases_fcinput()
-        print("lt", var_letrawk)
+
+        if var_letrawk is not None:
+
+            self.lista_sensor.gerenciador_dados(var_letrawk)

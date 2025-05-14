@@ -39,21 +39,27 @@ class MenuView:
 
                 match __valor:
 
-                    case 0:
+                    case 0:  # encera o sistema
 
+                        # desativa menu
                         self.__varinit = False
 
-                        self.var_class_controler.tc0m_encerarsistema_n0()
+                        # desativa IA
+                        self.var_class_controler.tc0m_desativarIA_n0()
 
-                    case 1:
+                    case 1:  # inicia a IA
 
                         self.var_class_controler.tc0m_Mandar_IA_trabalhar_n1()
 
-                    case 2:
+                    case 2:  # encera a IA
+
+                        self.var_class_controler.tc0m_desativarIA_n0()
+
+                    case 3:  # adiciona uma nova frase a lista de frases
 
                         self.var_class_msc.tc0msc_input_string()
 
-                    case '*':
+                    case '*':  #barra de menu
 
                         self.mv_print_espaco()
 

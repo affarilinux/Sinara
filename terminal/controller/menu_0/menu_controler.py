@@ -10,8 +10,8 @@ class MenuControler:
 
         self.frases = FrasesModel()
 
-    def tc0m_encerarsistema_n0(self):
-        """encerando todo o sistema inclusive a IA"""
+    def tc0m_desativarIA_n0(self):
+        """encerando IA"""
 
         self.ia_config.comandos.put("encerar_IA")
 
