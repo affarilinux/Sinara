@@ -38,42 +38,6 @@ class FrasesModel:
         if self.__frases:
             self.__frases.pop(0)
 
-        """def Sinara_frases_fcinput(self):
-        Retorna letra por letra da frase atual, ou None se não houver frases
-
-        # Verifica se há frases
-        if not self.__frases:
-            # Se não houver frases, retorna None
-            return None
-
-        var_letra = None
-
-        if self.__indice_frase == 0:
-
-            self.indice_frase_0()
-
-            var_letra = self.indice_letra_frase_0(self.__indice_letra)
-
-        elif self.__indice_letra < self.__indice_frase:
-
-            var_letra = self.indice_letra_frase_0(self.__indice_letra)
-
-        elif self.__indice_letra == self.__indice_frase:
-
-            var_letra = self.indice_letra_frase_0(self.__indice_letra)
-
-            self.__indice_frase = 0
-            self.__indice_letra = 0
-
-            self.remover_frase_0()
-
-
-            return var_letra
-
-            
-        self.__indice_letra += 1
-        return var_letra"""
-
     def Sinara_frases_fcinput(self):
         """Retorna letra por letra da frase atual, ou None se não houver frases"""
 

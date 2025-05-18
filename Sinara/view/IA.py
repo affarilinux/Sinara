@@ -3,7 +3,9 @@ import queue
 import trio
 
 from Sinara.static.IA_mensagem import IAMensagem
-from Sinara.controler.IA_controler import IAControler
+
+from Sinara.controler.IA_sensor import IASensor
+from Sinara.controler.IA_rede import IARede
 
 
 """class IA:
@@ -67,7 +69,9 @@ class IA:
         self.comandos = comando_queue
 
         self.ia_mensagem = IAMensagem()
-        self.controller = IAControler()
+
+        self.controller = IASensor()
+        self.controller_rede = IARede()
 
         self.evento_parar = trio.Event()  # Evento para controle do loop da IA
 
@@ -104,7 +108,10 @@ class IA:
 
     async def executar_ia(self):
         while not self.evento_parar.is_set():
+
             await self.controller.sensor_rede()  # Seu loop de rede
+            #await self.controller_rede.input_rede()
+
             await trio.sleep(0.1)  # Reduz uso de CPU
 
     def aguardar_encerramento(self):
