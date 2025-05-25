@@ -6,6 +6,7 @@ from Sinara.static.IA_mensagem import IAMensagem
 
 from Sinara.controler.IA_sensor import IASensor
 from Sinara.controler.IA_rede import IARede
+from Sinara.controler.IA_caractere import IACaractere
 
 
 """class IA:
@@ -70,7 +71,8 @@ class IA:
 
         self.ia_mensagem = IAMensagem()
 
-        self.controller = IASensor()
+        self.varclass_caractere = IACaractere()
+        self.varclass_control_sensor = IASensor()
         self.controller_rede = IARede()
 
         self.evento_parar = trio.Event()  # Evento para controle do loop da IA
@@ -109,8 +111,9 @@ class IA:
     async def executar_ia(self):
         while not self.evento_parar.is_set():
 
-            await self.controller.sensor_rede()  # Seu loop de rede
-            #await self.controller_rede.input_rede()
+            await self.varclass_caractere.receber_caractere()  # Seu loop de rede
+            await self.varclass_control_sensor.receber_sensor()  # Seu loop de rede
+            await self.controller_rede.input_rede()
 
             await trio.sleep(0.1)  # Reduz uso de CPU
 

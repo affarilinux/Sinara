@@ -8,64 +8,60 @@ class FrasesModel:
             # Se a instância não existe, cria uma nova
             # cls semelhante a Singleton- self.__class__
             cls.__instancia = super(FrasesModel, cls).__new__(cls)
-            cls.__instancia.__frases = []
-            cls.__instancia.__indice_frase = 0
+            cls.__instancia.__varfrase = []
+            cls.__instancia.__varquantidade_letra = 0
             # letra comeca com -1 caso contrario falta letra-0
-            cls.__instancia.__indice_letra = 0
+            cls.__instancia.__varindice_letra = 0
 
         return cls.__instancia
-    """pasta terminal"""
+    """
+        pasta terminal
+        
+    """
 
+    # função pasta da Terminal.menucontroler.py
+    # externo da IA
     def adicionar_frase(self, frase):
         """adiciona uma nova frase a lista de frases"""
-        self.__frases.append(frase)
+        self.__varfrase.append(frase)
 
-    """pasta sinara"""
+    """  
+        pasta sinara    
+    """
 
-    def indice_frase_0(self):
+    # verfica se tem algo na lista de frases
 
-        self.__indice_frase = len(self.__frases[0])
+    def get_verificar_frases(self):  # rount
+        """verifica se há frases na lista de frases"""
 
-    def indice_letra_frase_0(self, indice):
+        # Verifica se há frases na lista
+        return bool(self.__varfrase)
 
-        letra = self.__frases[0][indice]
+    def indice_letra_frase(self):  # rount
 
-        return letra
+        # Se o valor for igual a 0 atualizar lista de frases
+        if self.__varquantidade_letra == 0:
+            # frase de indice 0, excluindo as outras frases
+            self.__varquantidade_letra = len(self.__varfrase[0])
 
-    def remover_frase_0(self):
-        """remove a primeira frase da lista de frases"""
-
-        if self.__frases:
-            self.__frases.pop(0)
-
-    def Sinara_frases_fcinput(self):
-        """Retorna letra por letra da frase atual, ou None se não houver frases"""
-
-        # Verifica se há frases
-        if not self.__frases:
-            return None
+    # ler os caracteres da frase
+    def Sinara_frases_fcinput(self):  # rount
 
         var_letra = None
 
-        # Se ainda não pegamos o tamanho da frase atual
-        if self.__indice_frase == 0:
-            self.indice_frase_0()
+        # Se o índice ainda está dentro da frase
+        if self.__varindice_letra < self.__varquantidade_letra:
 
-            # Se o índice ainda está dentro da frase
-        if self.__indice_letra < self.__indice_frase:
-            var_letra = self.indice_letra_frase_0(self.__indice_letra)
+            var_letra = self.__varfrase[0][self.__varindice_letra]
 
-        # Se acabou a frase
-        elif self.__indice_letra == self.__indice_frase:
-            # var_letra = self.indice_letra_frase_0(self.__indice_letra)
-            self.__indice_frase = 0
-            self.__indice_letra = 0
-            self.remover_frase_0()
+            # Atualiza o índice da letra
+            self.__varindice_letra += 1
 
-        # print(
-            # f"frase {self.__indice_frase} letra{self.__indice_letra} {var_letra}")
-        if self.__indice_letra < self.__indice_frase:
-            print(self.__indice_letra, self.__indice_frase)
-            self.__indice_letra += 1
+            # Se acabou a frase
+            if self.__varindice_letra == self.__varquantidade_letra:
+
+                self.__varquantidade_letra = 0
+                self.__varindice_letra = 0
+                self.__varfrase.pop(0)  # remove frase usada
 
         return var_letra

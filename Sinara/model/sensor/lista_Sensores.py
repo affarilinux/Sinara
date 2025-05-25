@@ -11,13 +11,12 @@ class ListaSensores:
             # adiciona a letra na lista de letras
             ListaSensores.__letras_dict[g_letra] = 0
 
-        print(f"letras {ListaSensores.__letras_dict} na lista de letras")
-
-    def atualizar_valor_sensor(self, letra):
+    def atualizar_valor_sensor(self, letra, valor):
         """atualiza o valor do sensor"""
         if letra in ListaSensores.__letras_dict:
-            ListaSensores.__letras_dict[letra] = 100
+            ListaSensores.__letras_dict[letra] = valor
 
-    def get_lista_100(self):
+    def get_lista_100(self):  # controler input IA_rede
         """retorna a lista de letras"""
-        return {letra: valor for letra, valor in ListaSensores.__letras_dict.items() if valor == 100}
+
+        return ListaSensores.__letras_dict
