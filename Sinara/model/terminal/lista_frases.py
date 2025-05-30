@@ -1,6 +1,7 @@
 
 class FrasesModel:
-    __instancia = None
+    __instancia = None  # lista[]
+    __caractere = None  # somente um caractere
 
     def __new__(cls):
 
@@ -19,7 +20,7 @@ class FrasesModel:
         
     """
 
-    # função pasta da Terminal.menucontroler.py
+    # função pasta da Terminal.menucontroler.py# controler
     # externo da IA
     def adicionar_frase(self, frase):
         """adiciona uma nova frase a lista de frases"""
@@ -49,19 +50,24 @@ class FrasesModel:
 
         var_letra = None
 
-        # Se o índice ainda está dentro da frase
         if self.__varindice_letra < self.__varquantidade_letra:
-
             var_letra = self.__varfrase[0][self.__varindice_letra]
-
-            # Atualiza o índice da letra
             self.__varindice_letra += 1
 
-            # Se acabou a frase
-            if self.__varindice_letra == self.__varquantidade_letra:
+            FrasesModel.__caractere = var_letra  # <-- Atribui primeiro
+            print(f"Caractere atual: {FrasesModel.__caractere}")
 
-                self.__varquantidade_letra = 0
-                self.__varindice_letra = 0
-                self.__varfrase.pop(0)  # remove frase usada
+        elif self.__varindice_letra == self.__varquantidade_letra:
+            # Agora sim, limpa tudo depois de ler o último caractere
+            self.__varquantidade_letra = 0
+            self.__varindice_letra = 0
+            self.__varfrase.pop(0)
+            FrasesModel.__caractere = None
+            print(f"Caractere final: {FrasesModel.__caractere}")
 
-        return var_letra
+        # else:
+            # FrasesModel.__caractere = None  # <-- só entra aqui se não tiver mais letra
+
+    def get_caractere(self):
+        """retorna o caractere"""
+        return FrasesModel.__caractere

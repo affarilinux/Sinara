@@ -7,7 +7,7 @@ class CaracteteRount:
 
         self.varclass_frases = FrasesModel()
 
-    def get_caractere(self):
+    def ler_caractere(self):
 
         var_lista_caractere = self.varclass_frases.get_verificar_frases()
 
@@ -15,6 +15,13 @@ class CaracteteRount:
 
             self.varclass_frases.indice_letra_frase()
 
-            var_letra = self.varclass_frases.Sinara_frases_fcinput()
+            self.varclass_frases.Sinara_frases_fcinput()
 
-            return var_letra
+    def get_rount_caractere(self):
+        """Retorna o caractere atual da lista de frases."""
+
+        return self.varclass_frases.get_caractere()
+
+            
+        
+    

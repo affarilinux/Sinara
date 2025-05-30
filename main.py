@@ -41,7 +41,8 @@ class Inicializador:
             PrintStatic.printar(self.varclass_main.ENCERANDO_CTRLC)
             self.ia.comandos.put("parar")
 
-        self.ia.aguardar_encerramento()  # ia.py
+        self.ia.aguardar_encerramento()  # ia.py3
+        
 
         self.verificar_threads()
 
