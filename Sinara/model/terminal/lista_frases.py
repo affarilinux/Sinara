@@ -55,7 +55,6 @@ class FrasesModel:
             self.__varindice_letra += 1
 
             FrasesModel.__caractere = var_letra  # <-- Atribui primeiro
-            print(f"Caractere atual: {FrasesModel.__caractere}")
 
         elif self.__varindice_letra == self.__varquantidade_letra:
             # Agora sim, limpa tudo depois de ler o último caractere
@@ -63,7 +62,6 @@ class FrasesModel:
             self.__varindice_letra = 0
             self.__varfrase.pop(0)
             FrasesModel.__caractere = None
-            print(f"Caractere final: {FrasesModel.__caractere}")
 
         # else:
             # FrasesModel.__caractere = None  # <-- só entra aqui se não tiver mais letra

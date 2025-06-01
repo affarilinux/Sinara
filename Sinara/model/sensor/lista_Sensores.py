@@ -3,17 +3,10 @@ class ListaSensores:
 
     __letras_dict = {}  # {'a': 0, 'b': 1, ...}
 
-    def atualizar_adiciona_valor_sensor(self, letra, valor):
-        """atualiza o valor do sensor"""
-        if letra in ListaSensores.__letras_dict:
-            ListaSensores.__letras_dict[letra] = valor
+    def set_sensor(self, lista_sensor: dict):
+        """Define a lista de sensores com os valores fornecidos."""
+        ListaSensores.__letras_dict = lista_sensor
 
-        elif letra not in ListaSensores.__letras_dict:
+    def get_sensor(self):  # controler input IA_rede
 
-            ListaSensores.__letras_dict[letra] = valor
-
-        print(ListaSensores.__letras_dict)
-
-    def get_bool_sensor(self):  # controler input IA_rede
-
-        return bool(ListaSensores.__letras_dict)
+        return ListaSensores.__letras_dict

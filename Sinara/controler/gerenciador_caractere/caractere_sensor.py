@@ -9,4 +9,4 @@ class CaractereSensor:
 
     def enviar_caractere_sensor(self):
 
-        self.carclass_CR.ler_caractere()
+        self.carclass_CR.ler_lista_sensores()

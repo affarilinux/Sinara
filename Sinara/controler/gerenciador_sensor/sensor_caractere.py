@@ -9,4 +9,4 @@ class SensorCaractere:
 
     def sensor_rede(self):
         """Atualiza o sensor com o caractere atual."""
-        self.varclasss_su.ler_caractere()
+        self.varclasss_su.ler_lista_sensores_rount()

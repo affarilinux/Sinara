@@ -1,7 +1,8 @@
-
+from Sinara.rount.atualizar_list.entrada_rede_rount import EntradaRedeRount
 class EntradaRede:
+    def __init__(self) -> None:
+        self.varclass_ger_rede = EntradaRedeRount()
 
-    def celula_lista100(self, list_sensor):
-        pass
-
-        # print(f"Lista de entradas ativas: {list_sensor}")
+    def ativar_entrada_rede(self, ):
+       
+       self.varclass_ger_rede.ler_entrada_rede()

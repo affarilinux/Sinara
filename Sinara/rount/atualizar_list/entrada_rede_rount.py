@@ -1,27 +1,33 @@
-from Sinara.model.rede.exe_input import ExeInputRede
+from Sinara.model.rede.inicializador_rede import InicializadorRede
+from Sinara.rount.atualizar_list.sensores_Rount import SensoresRount
+from Sinara.core.celular.entrada_rede import EntradaRede
 
 
 class EntradaRedeRount:
 
     def __init__(self):
 
-        self.varclass_eir = ExeInputRede()
+        self.varclass_list_rede_input = InicializadorRede()
+        self.varclass_sensores = SensoresRount()
+        self.varclass_enterrede = EntradaRede()
 
-    def celula_adionada_atualizada(self, lista_sensor):
-        """
-        Atualiza a lista de sensores com os dados mais recentes.
-        """
-        # print(f"lista sensor {lista_sensor}")
-        for letra, valor in lista_sensor.items():
-            self.varclass_eir.adicionar_input(letra, valor)
+    def ler_entrada_rede(self):
+        """Lê a entrada de dados da rede e atualiza a lista de sensores."""
 
-    def get_celula_ativas(self):
-        """
-        Retorna a lista de sensores ativos.
-        """
-        var_list_IR = self.varclass_eir.get_lista_input()
-        return {
-            id: referencia
-            for id, (referencia, valor) in enumerate(var_list_IR.items())
-            if valor == 100
-        }
+        # lista input da rede
+        var_lri = self.varclass_list_rede_input.get_rede_input()
+        var_estado = self.varclass_list_rede_input.get_dados_lidos_input()
+
+        # lista de sensores
+        dict_sensor = self.varclass_sensores.get_lista_sensor_rount()
+
+        # Verifica se a entrada de rede está ativa
+        if var_estado == False:
+            
+
+            var_set_enter_rede = self.varclass_enterrede.ativar_entrada_rede(
+                var_lri, dict_sensor)
+
+            self.varclass_list_rede_input.set_dados_lidos_input(True)
+
+    

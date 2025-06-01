@@ -7,7 +7,7 @@ class CaracteteRount:
 
         self.varclass_frases = FrasesModel()
 
-    def ler_caractere(self):
+    def ler_lista_sensores(self):
 
         var_lista_caractere = self.varclass_frases.get_verificar_frases()
 
@@ -21,7 +21,3 @@ class CaracteteRount:
         """Retorna o caractere atual da lista de frases."""
 
         return self.varclass_frases.get_caractere()
-
-            
-        
-    

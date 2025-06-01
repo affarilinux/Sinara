@@ -2,10 +2,10 @@ from Sinara.model.sensor.lista_Sensores import ListaSensores
 
 from Sinara.rount.atualizar_list.caractere_rount import CaracteteRount
 
+from Sinara.core.celular.sensor_rount import SensorRount
+
 
 class SensoresRount:
-
-    __caractere_antigo = None
 
     def __init__(self):
 
@@ -14,7 +14,10 @@ class SensoresRount:
         # vem dos caracteres
         self.varclass_cr = CaracteteRount()
 
-    def ler_caractere(self):
+        # vem do sensor
+        self.varclass_sr = SensorRount()
+
+    def ler_lista_sensores_rount(self):
         """Lê o caractere atual e atualiza a lista de sensores."""
 
         var_letra = self.varclass_cr.get_rount_caractere()
@@ -22,28 +25,17 @@ class SensoresRount:
         # Verifica se o caractere é alfabético
         if var_letra is not None:
 
-            var_bool_sensor = self.varclass_ls.get_bool_sensor()
+            lista_sensor = self.varclass_ls.get_sensor()
 
-            if var_bool_sensor == False:
+            var_sensor_celular = self.varclass_sr.return_dicionario_sensor(
+                var_letra, lista_sensor)
 
-                self.varclass_ls.atualizar_adiciona_valor_sensor(
-                    var_letra, 100)
-                
-                SensoresRount.__caractere_antigo = var_letra
+            self.varclass_ls.set_sensor(var_sensor_celular)
 
-            elif var_bool_sensor == True:
+    def get_lista_sensor_rount(self):
+        """Retorna a lista de sensores atualizada."""
 
-                # desativa o caractere antigo,
-                self.varclass_ls.atualizar_adiciona_valor_sensor(
-                    SensoresRount.__caractere_antigo, 0 )
-                
-                # ativa o novo caractere
-                self.varclass_ls.atualizar_adiciona_valor_sensor(
-                    var_letra, 100)
-                
-                SensoresRount.__caractere_antigo = var_letra
-                
-
+        return self.varclass_ls.get_sensor()
 
     """def atualizar_lista_ls(self, letra, valor):
         

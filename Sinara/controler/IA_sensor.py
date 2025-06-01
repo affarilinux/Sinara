@@ -11,3 +11,4 @@ class IASensor:
     async def receber_sensor(self):
 
         self.varclass_ger_sensor.sensor_rede()
+        

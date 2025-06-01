@@ -1,6 +1,9 @@
-
+from Sinara.core.celular.nucleo_celular import NucleoCelular
 class Celula:
 
-    __PICO = 100
-    __LIMIAR_ATIVACAO = 15
-    __REPOUSO = 0
+    def __init__(self) -> None:
+        
+        self.varclas_nc = NucleoCelular()
+
+    def 
+       
