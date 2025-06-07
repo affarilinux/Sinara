@@ -1,4 +1,3 @@
-
 class InicializadorRede:
 
     __rede_input = {}  # {1:100,2:50,3:0}

@@ -1,7 +1,7 @@
 from Sinara.core.celular.nucleo_celular import NucleoCelular
 
 
-class SensorRount:
+class SensorCelularRount:
 
     __caractere_antigo = None
 
@@ -14,12 +14,12 @@ class SensorRount:
         """
         dict_sensor[caractere] = self.varclass_nc.pico()
 
-        if SensorRount.__caractere_antigo in dict_sensor:
+        """if SensorCelularRount.__caractere_antigo in dict_sensor:
             # Atualiza o caractere antigo para repouso
-            dict_sensor[SensorRount.__caractere_antigo] = self.varclass_nc.repouso()
+            dict_sensor[SensorCelularRount.__caractere_antigo] = self.varclass_nc.repouso()"""
 
         # Atualiza o caractere antigo com o novo caractere
-        SensorRount.__caractere_antigo = caractere
+        SensorCelularRount.__caractere_antigo = caractere
 
         # Retorna a lista de sensores atualizada
         return dict_sensor

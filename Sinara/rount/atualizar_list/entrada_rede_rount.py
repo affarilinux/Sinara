@@ -23,11 +23,18 @@ class EntradaRedeRount:
 
         # Verifica se a entrada de rede está ativa
         if var_estado == False:
-            
+
+            self.varclass_list_rede_input.set_dados_lidos_input(True)
 
             var_set_enter_rede = self.varclass_enterrede.ativar_entrada_rede(
                 var_lri, dict_sensor)
 
-            self.varclass_list_rede_input.set_dados_lidos_input(True)
+            if var_set_enter_rede == {}:
+               
+               self.atualizar_dados_lidos_input()
 
-    
+    def atualizar_dados_lidos_input(self):
+        """Atualiza os dados lidos da entrada de rede."""
+
+        # Atualiza o estado da entrada de rede
+        self.varclass_list_rede_input.set_dados_lidos_input(False)

@@ -21,3 +21,8 @@ class CaracteteRount:
         """Retorna o caractere atual da lista de frases."""
 
         return self.varclass_frases.get_caractere()
+
+    def set_rount_classcaractere(self, caractere):
+        """Define o caractere atual da lista de frases."""
+
+        self.varclass_frases.set_classcaractere(caractere)

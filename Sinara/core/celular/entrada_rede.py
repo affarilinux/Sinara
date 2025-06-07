@@ -12,8 +12,14 @@ class EntradaRede:
 
         # Atualiza o dicionário de sensores com os dados da rede
         dict_sensor = self.analise_sensor_ativo(dict_sensor)
-        print(f"Lista de sensores ativos: {dict_sensor}")
-        enter_rede = self.ativar_dados_rede_entrada(dict_sensor, enter_rede)
+
+        if not dict_sensor:
+            return {}
+
+        elif enter_rede:
+            print("A entrada de rede já está ativa.")
+
+        
 
     def analise_sensor_ativo(self, dict_sensor):
         """Analisa os sensores ativos e retorna uma lista de sensores."""

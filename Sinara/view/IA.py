@@ -106,7 +106,8 @@ class IA:
                 except queue.Empty:
                     pass
 
-                await trio.sleep(0.2)
+                # Aguarda um segundo antes de verificar novamente
+                await trio.sleep(1.0)
 
     async def executar_ia(self):
         while not self.evento_parar.is_set():
