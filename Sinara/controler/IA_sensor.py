@@ -1,4 +1,4 @@
-from Sinara.controler.gerenciador_sensor.sensor_caractere import SensorCaractere
+from Sinara.rount.atualizar_list.sensores_Rount import SensoresRount
 
 
 class IASensor:
@@ -6,9 +6,8 @@ class IASensor:
 
     def __init__(self) -> None:
 
-        self.varclass_ger_sensor = SensorCaractere()
+        self.varclasss_su = SensoresRount()
 
     async def receber_sensor(self):
 
-        self.varclass_ger_sensor.sensor_rede()
-        
+        self.varclasss_su.ler_lista_sensores_rount()

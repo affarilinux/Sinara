@@ -6,35 +6,40 @@ from Sinara.core.celular.entrada_rede import EntradaRede
 class EntradaRedeRount:
 
     def __init__(self):
-
+        # model-principal
         self.varclass_list_rede_input = InicializadorRede()
+        # rount
         self.varclass_sensores = SensoresRount()
+        # core
         self.varclass_enterrede = EntradaRede()
 
     def ler_entrada_rede(self):
         """Lê a entrada de dados da rede e atualiza a lista de sensores."""
-
-        # lista input da rede
-        var_lri = self.varclass_list_rede_input.get_rede_input()
-        var_estado = self.varclass_list_rede_input.get_dados_lidos_input()
-
-        # lista de sensores
+        # lista de sensores, verificar se esta ativo ou nao
+        # rount
         dict_sensor = self.varclass_sensores.get_lista_sensor_rount()
 
-        # Verifica se a entrada de rede está ativa
-        if var_estado == False:
+        # Verifica se algum sensor tem valor 100
+        # core
+        var_class_100any = (
+            self.varclass_enterrede.tem_valor_100_any_tf(dict_sensor))
+        # print(f"Entrada de rede ativa: {var_class_100any}")
 
-            self.varclass_list_rede_input.set_dados_lidos_input(True)
+        # igual true ativa,false nao
+        if var_class_100any:
 
-            var_set_enter_rede = self.varclass_enterrede.ativar_entrada_rede(
+            # model-principal
+            var_lri = self.varclass_list_rede_input.get_rede_input()
+
+            # core celular
+            var_core_ativas = self.varclass_enterrede.entrada_ativada_rede(
                 var_lri, dict_sensor)
 
-            if var_set_enter_rede == {}:
-               
-               self.atualizar_dados_lidos_input()
+            # model-principal
+            self.varclass_list_rede_input.set_rede_input(var_core_ativas)
 
-    def atualizar_dados_lidos_input(self):
-        """Atualiza os dados lidos da entrada de rede."""
+            print("seja", self.varclass_list_rede_input.get_rede_input())
 
-        # Atualiza o estado da entrada de rede
-        self.varclass_list_rede_input.set_dados_lidos_input(False)
+            self.varclass_sensores.set_zera_dict_sensor_celular()
+
+           

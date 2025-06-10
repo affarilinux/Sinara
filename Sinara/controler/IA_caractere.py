@@ -1,12 +1,12 @@
-from Sinara.controler.gerenciador_caractere.caractere_sensor import CaractereSensor
+from Sinara.rount.atualizar_list.caractere_rount import CaracteteRount
 
 
 class IACaractere:
 
     def __init__(self) -> None:
 
-        self.varclass_caractere = CaractereSensor()
+        self.carclass_CR = CaracteteRount()
 
     async def receber_caractere(self):
 
-        self.varclass_caractere.enviar_caractere_sensor()
+        self.carclass_CR.ler_lista_sensores()

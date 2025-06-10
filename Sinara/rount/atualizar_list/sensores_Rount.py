@@ -26,26 +26,39 @@ class SensoresRount:
         if var_letra is not None:
 
             # model sensor vai para celula
-            dict_sensor = self.varclass_ls.get_sensor()
+            dict_sensor = self.get_lista_sensor_rount()
 
             # Verifica se todos os sensores estão em estado 0 (repouso)
             if all(valor == 0 for valor in dict_sensor.values()):
 
                 # diretorio core celular
-                var_sensor_celular = self.varclass_scr.return_dicionario_sensor(
+                var_sensor_celular = self.varclass_scr.return_adicao_sensor(
                     var_letra, dict_sensor)
 
                 # Atualiza a lista de sensores com o sensor celular
-                self.varclass_ls.set_sensor(var_sensor_celular)
-
-                print(f"Sensor atualizado: {var_sensor_celular}")
+                self.set_sensor_rount(var_sensor_celular)
 
                 # none dos caracteres ## do rount
                 self.varclass_cr.set_rount_classcaractere(None)
 
     def get_lista_sensor_rount(self):
-        """Retorna a lista de sensores atualizada."""
+        """Recebe a lista de sensores atualizada."""
 
         return self.varclass_ls.get_sensor()
 
-    def set_dict_sensor_celular(self):
+    def set_sensor_rount(self, dict_sensor: dict):
+        """Define a lista de sensores atualizada."""
+
+        self.varclass_ls.set_sensor(dict_sensor)
+
+    def set_zera_dict_sensor_celular(self):
+        """Zera o sensor celular e atualiza a lista de sensores."""
+
+        var_class_dict = self.get_lista_sensor_rount()
+
+        var_class_celula = self.varclass_scr.zerar_sensor_celular(
+            var_class_dict)
+
+        self.set_sensor_rount(var_class_celula)
+
+        print("atualizado", self.varclass_ls.get_sensor())
